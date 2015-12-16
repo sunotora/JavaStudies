@@ -20,11 +20,11 @@ public class Node6Test {
 
 		Calc6 calc = new Calc6();
 
-		//できない
-//		int actual = node6.<Integer, Void>accept(calc, Void);
-//		int expected = 2 + 3 + 6;
-//
-//		assertThat(actual, is(expected));
+		//Void → nullでいいらしい
+		int actual = node6.<Integer, Void>accept(calc, null);
+		int expected = 2 + 3 + 6;
+
+		assertThat(actual, is(expected));
 	}
 
 	@Test
