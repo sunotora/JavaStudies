@@ -1,16 +1,16 @@
-package jp.co.sunotora.visitor.Node5;
+package jp.co.sunotora.visitor.Node6;
 
-public class Calc5 implements Visitor5 {
+public class Calc6 implements Visitor6<Integer, Void> {
 
 	@Override
-	public int visit(NumNode5 node) {
-		return node.value;
+	public Integer visit(NumNode6 node, Void parameter) {
+		return Integer.valueOf(node.value);
 	}
 
 	@Override
-	public int visit(AddNode5 node) {
-		int left = node.left.accept(this);
-		int right = node.right.accept(this);
-		return left + right;
+	public Integer visit(AddNode6 node, Void parameter) {
+		int left = node.left.accept(this, parameter);
+		int right = node.right.accept(this, parameter);
+		return Integer.valueOf(left + right);
 	}
 }

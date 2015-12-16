@@ -1,39 +1,33 @@
-package jp.co.sunotora.visitor.Node5;
+package jp.co.sunotora.visitor.Node6;
 
 import java.io.IOException;
 import java.io.Writer;
 
-public class Printer5 implements Visitor5 {
-
-	private final Writer out;
-
-	public Printer5(Writer out) {
-		this.out = out;
-	}
+public class Printer6 implements Visitor6<Void, Writer> {
 
 	@Override
-	public int visit(NumNode5 node) {
+	public Void visit(NumNode6 node, Writer parameter) {
 		try {
-			out.write(String.valueOf(node.value));
+			parameter.write(String.valueOf(node.value));
 		} catch (IOException e) {
 
 			throw new RuntimeException(e);
 		}
-
-		return 0;
+		return null;
 	}
 
 	@Override
-	public int visit(AddNode5 node) {
+	public Void visit(AddNode6 node, Writer parameter) {
         try {
-            out.write("(");
-            node.left.accept(this);
-            out.write("+");
-            node.right.accept(this);
-            out.write(")");
+            parameter.write("(");
+            node.left.accept(this, parameter);
+            parameter.write("+");
+            node.right.accept(this, parameter);
+            parameter.write(")");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return 0;
+        return null;
 	}
+
 }

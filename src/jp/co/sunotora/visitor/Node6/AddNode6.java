@@ -11,8 +11,7 @@ public class AddNode6 implements Node6 {
 	}
 
 	@Override
-	public int accept(Visitor6 visitor) {
-		return visitor.visit(this);
+	public <R, P> R accept(Visitor6<R, P> visitor, P parameter) {
+		return visitor.visit(this, parameter);
 	}
-
 }
