@@ -4,7 +4,6 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.*;
 
 import java.io.StringWriter;
-import java.io.Writer;
 
 import org.junit.Test;
 
@@ -21,7 +20,8 @@ public class Node6Test {
 		Calc6 calc = new Calc6();
 
 		//Void → nullでいいらしい
-		int actual = node6.<Integer, Void>accept(calc, null);
+//		int actual = node6.<Integer, Void>accept(calc, null);
+		int actual = node6.accept(calc, null);
 		int expected = 2 + 3 + 6;
 
 		assertThat(actual, is(expected));
@@ -37,7 +37,8 @@ public class Node6Test {
 
 		StringWriter out = new StringWriter();
 		Printer6 printer = new Printer6();
-		node6.<Void, Writer>accept(printer, out);
+//		node6.<Void, Writer>accept(printer, out);
+		node6.accept(printer, out);
 		String actual = out.toString();
 		String expected = "((2+3)+6)";
 
