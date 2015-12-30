@@ -5,20 +5,29 @@ import jp.co.sunotora.typesafeTest.vo.TestVo02;
 import jp.co.sunotora.typesafeTest.vo.TestVo03;
 import jp.co.sunotora.typesafeTest.vo.ValueObjectMarker;
 
-public class ProcessEnums <T extends ValueObjectMarker> {
+public class ProcessEnumsBlackArts01 <T extends ValueObjectMarker> {
 
-	// typesafe-enum パターン
-	// JAXBのunmarshalでclassが欲しいのだが引数として渡してやるしかない？
-	public static final ProcessEnums<TestVo01> PROCESS01 = new ProcessEnums<>(TestVo01.class, createTestVo01Xml());
-	public static final ProcessEnums<TestVo02> PROCESS02 = new ProcessEnums<>(TestVo02.class, createTestVo02Xml());
-	public static final ProcessEnums<TestVo03> PROCESS03 = new ProcessEnums<>(TestVo03.class, createTestVo03Xml());
+	//邪法その１
+	// コンストラクタのclazzに空の配列を渡し空の配列からリフレクションでclassを得る
+	public static final ProcessEnumsBlackArts01<TestVo01> PROCESS01 = new ProcessEnumsBlackArts01<>(createTestVo01Xml());
+	public static final ProcessEnumsBlackArts01<TestVo02> PROCESS02 = new ProcessEnumsBlackArts01<>(createTestVo02Xml());
+	public static final ProcessEnumsBlackArts01<TestVo03> PROCESS03 = new ProcessEnumsBlackArts01<>(createTestVo03Xml());
 
-	private Class<T> clazz;
 	private String xml;
+	private Class<T> clazz;
 
-	private ProcessEnums(Class<T> clazz, String xml) {
-		this.clazz = clazz;
+	//ta経由の潜在的なヒープ汚染があるらしい・・・
+	@SafeVarargs
+	private ProcessEnumsBlackArts01(String xml, T... ta) {
 		this.xml = xml;
+		try {
+			Class<?> clazz = ta.getClass();
+			Class<?> componentType = clazz.getComponentType();
+			this.clazz = (Class<T>) componentType.newInstance().getClass();
+		} catch (ReflectiveOperationException e) {
+			throw new RuntimeException(e);
+		}
+
 	}
 
 	public Class<T> getClazz() {
