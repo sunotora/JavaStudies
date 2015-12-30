@@ -29,7 +29,7 @@ public class ProcessEnums <T extends ValueObjectMarker> {
 		return xml;
 	}
 
-	private static String createTestVo01Xml() {
+	public static String createTestVo01Xml() {
 		return
 			  "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>"
 			+ "<root>"
@@ -39,7 +39,7 @@ public class ProcessEnums <T extends ValueObjectMarker> {
 			+ "</root>";
 	}
 
-	private static String createTestVo02Xml() {
+	public static String createTestVo02Xml() {
 		return
 			  "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>"
 			+ "<root>"
@@ -48,7 +48,7 @@ public class ProcessEnums <T extends ValueObjectMarker> {
 			+ "</root>";
 	}
 
-	private static String createTestVo03Xml() {
+	public static String createTestVo03Xml() {
 		return
 			  "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>"
 			+ "<root>"

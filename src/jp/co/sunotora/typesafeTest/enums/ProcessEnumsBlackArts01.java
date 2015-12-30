@@ -9,9 +9,9 @@ public class ProcessEnumsBlackArts01 <T extends ValueObjectMarker> {
 
 	//邪法その１
 	// コンストラクタのclazz(taに変更)に空の配列を渡し空の配列からリフレクションでclassを得る
-	public static final ProcessEnumsBlackArts01<TestVo01> PROCESS01 = new ProcessEnumsBlackArts01<>(createTestVo01Xml());
-	public static final ProcessEnumsBlackArts01<TestVo02> PROCESS02 = new ProcessEnumsBlackArts01<>(createTestVo02Xml());
-	public static final ProcessEnumsBlackArts01<TestVo03> PROCESS03 = new ProcessEnumsBlackArts01<>(createTestVo03Xml());
+	public static final ProcessEnumsBlackArts01<TestVo01> PROCESS01 = new ProcessEnumsBlackArts01<>(ProcessEnums.createTestVo01Xml());
+	public static final ProcessEnumsBlackArts01<TestVo02> PROCESS02 = new ProcessEnumsBlackArts01<>(ProcessEnums.createTestVo02Xml());
+	public static final ProcessEnumsBlackArts01<TestVo03> PROCESS03 = new ProcessEnumsBlackArts01<>(ProcessEnums.createTestVo03Xml());
 
 	private String xml;
 	private Class<T> clazz;
@@ -36,33 +36,5 @@ public class ProcessEnumsBlackArts01 <T extends ValueObjectMarker> {
 
 	public String getXml() {
 		return xml;
-	}
-
-	private static String createTestVo01Xml() {
-		return
-			  "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>"
-			+ "<root>"
-			+ " <hoge>aaa</hoge>"
-			+ " <huga>ccc</huga>"
-			+ " <piyo>bbb</piyo>"
-			+ "</root>";
-	}
-
-	private static String createTestVo02Xml() {
-		return
-			  "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>"
-			+ "<root>"
-			+ " <id>20</id>"
-			+ " <name>Bob</name>"
-			+ "</root>";
-	}
-
-	private static String createTestVo03Xml() {
-		return
-			  "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>"
-			+ "<root>"
-			+ " <foo>netai</foo>"
-			+ " <bar>nemui</bar>"
-			+ "</root>";
 	}
 }
