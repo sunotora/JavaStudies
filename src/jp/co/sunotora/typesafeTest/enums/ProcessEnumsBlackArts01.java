@@ -8,7 +8,7 @@ import jp.co.sunotora.typesafeTest.vo.ValueObjectMarker;
 public class ProcessEnumsBlackArts01 <T extends ValueObjectMarker> {
 
 	//邪法その１
-	// コンストラクタのclazzに空の配列を渡し空の配列からリフレクションでclassを得る
+	// コンストラクタのclazz(taに変更)に空の配列を渡し空の配列からリフレクションでclassを得る
 	public static final ProcessEnumsBlackArts01<TestVo01> PROCESS01 = new ProcessEnumsBlackArts01<>(createTestVo01Xml());
 	public static final ProcessEnumsBlackArts01<TestVo02> PROCESS02 = new ProcessEnumsBlackArts01<>(createTestVo02Xml());
 	public static final ProcessEnumsBlackArts01<TestVo03> PROCESS03 = new ProcessEnumsBlackArts01<>(createTestVo03Xml());
